@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// Use correct backend URL (same as in Postman)
+// ✅ Use full backend NodePort URL (works both local & Kubernetes)
 const API_URL = "http://localhost:30083/back1/auth";
 
 export const signup = async (username, email, password) => {
@@ -10,15 +10,13 @@ export const signup = async (username, email, password) => {
       { username, email, password },
       { headers: { "Content-Type": "application/json" } }
     );
-    console.log("Signup success:", response.data);
+    alert("Signup successful!");
     return response.data;
   } catch (error) {
+    console.error("Signup failed:", error);
     if (error.response) {
-      console.error("Backend returned error:", error.response.data);
-    } else {
-      console.error("Network/Other error:", error.message);
+      console.log("Backend response:", error.response.data);
     }
     alert("Signup failed!");
   }
 };
-
