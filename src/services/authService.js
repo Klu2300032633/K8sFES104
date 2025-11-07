@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // ✅ Use full backend NodePort URL (works both local & Kubernetes)
-const API_URL = "http://localhost:30083/back1/auth";
+const API_URL = "http://backend-service:8080/back1/auth";
+
 
 export const signup = async (username, email, password) => {
   try {
